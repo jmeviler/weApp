@@ -1,0 +1,24 @@
+<view class="container-express">
+  <view class="picker-wrapper">
+    <view class="picker-tips">当前选择：</view>
+    <picker class="picker-select" bindchange="bindExpressChange" value="{{index}}" range="{{express}}">
+        <view class="picker">{{express[index]}}</view>
+    </picker>
+  </view>
+  <view class="input-wrapper">
+    <input class="input-post" type="number" placeholder="请输入快递单号" bindinput="bindChangeInput" />
+    <button class="btn-search" type="primary" plain bindtap="bindOnSearch" loading="{{loading}}">查询</button>
+  </view>
+  <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
+    <view wx:for="{{data.data}}" wx:key="{{ index }}"  wx:for-item="item" class="{{ !index ? 'express-items-active' : 'express-items' }}">
+      <view class="express-item">
+        <view class="{{ !index ? 'point-active' : 'point' }}" />
+        <view class="item-context">{{item.context}}</view>
+        <view class="item-time">{{item.time}}</view>
+      </view>
+    </view>
+  </scroll-view>
+  <view wx:if="{{data.data.length === 0}}" class="express-error">
+    {{data.message}}
+  </view> 
+</view>

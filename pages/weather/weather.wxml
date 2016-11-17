@@ -1,0 +1,15 @@
+<view class="container-weather">
+    <text>{{weather.date}}</text>
+    <view class="weather" style="flex-direction:row;">
+      <text class="text-weather">{{weather.weather}}, {{weather.wind}}</text>
+      <image class="icon-weather" src="{{weather.dayPictureUrl}}" background-size="cover"></image>
+    </view>
+    <text class="text-weather">温度: {{weather.temperature}}</text>
+    <view>
+      <text class="tips-weather">{{weather.tipt.tipt}}: </text>
+      <text class="tips-desc">{{weather.tipt.des}}</text>
+    </view>
+    <view class="button-wrapper">
+      <button bindtap="updateWeather" loading="{{loading}}">刷新</button>
+    </view>
+</view>

@@ -1,0 +1,26 @@
+.container-weather {
+  padding: 30px;
+}
+
+.weather {
+  height: 30px;
+  display: flex;
+}
+
+.text-weather {
+  line-height: 30px;
+  padding-right: 30px;
+}
+
+.icon-weather {
+  width: 42px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.button-wrapper {
+    position: absolute;
+    bottom: 50px;
+    left: 30px;
+    width: calc(100% - 60px);
+}
