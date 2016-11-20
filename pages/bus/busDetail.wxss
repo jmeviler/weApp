@@ -1,0 +1,45 @@
+.bus-detail {
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid #ddd;
+}
+
+.header-wrapper {
+    background: #00aaff;
+    padding: .625rem;
+}
+
+.bus-name {
+    font-size: .75rem;
+    text-align: center;
+}
+
+.bus-start-end {
+    font-size: .9375rem;
+    display: inline-block;
+}
+
+.icon-switch {
+    width: 24px;
+    height: 24px;
+    right: .625rem;
+    position: absolute;
+}
+
+.scroll-view_H {
+    height: calc(100% - 85px);
+    padding: .625rem 0;
+}
+
+.stops-items {
+    padding: 0 .625rem;
+}
+
+.stop-item {
+    text-align: left;
+    font-size: .9375rem;
+}
+ 
+.bellows-wrapper {
+    padding: .3125rem .625rem;
+}

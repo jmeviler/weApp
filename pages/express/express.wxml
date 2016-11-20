@@ -9,7 +9,7 @@
     <input class="input-post" type="number" placeholder="请输入快递单号" bindinput="bindChangeInput" />
     <button class="btn-search" type="primary" plain bindtap="bindOnSearch" loading="{{loading}}">查询</button>
   </view>
-  <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
+  <scroll-view class="{{data.data.length === 0 ? 'hidden' : 'scroll-view_H'}}" scroll-y="true" style="width: 100%">
     <view wx:for="{{data.data}}" wx:key="{{ index }}"  wx:for-item="item" class="{{ !index ? 'express-items-active' : 'express-items' }}">
       <view class="express-item">
         <view class="{{ !index ? 'point-active' : 'point' }}" />

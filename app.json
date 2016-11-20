@@ -3,12 +3,28 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/weather/weather",
-    "pages/express/express"
+    "pages/express/express",
+    "pages/bus/bus",
+    "pages/bus/busDetail"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "小程序",
     "navigationBarTextStyle":"black"
-  }
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/bus/bus",
+      "text": "公交"
+    }]
+  },
+  "debug": true
 }

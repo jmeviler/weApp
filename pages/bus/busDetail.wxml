@@ -1,0 +1,19 @@
+<view class="bus-detail">
+  <view class="header-wrapper">
+    <view class="bus-name">{{name}}</view>
+    <view class="bus-start-end">
+        {{stations.start}} > {{stations.end}}
+    </view>
+    <image class="icon-switch" src="/image/switch.png" mode="aspectFill" />
+  </view>
+  <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
+    <view wx:for="{{stations.stops}}" wx:key="{{ index }}"  wx:for-item="item" class="stops-items">
+        <button class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
+            {{index+1}}.  {{item.zdmc}}
+        </button>
+        <view class="{{ stopId !== item.id ? 'bellows-wrapper' : 'hidden' }}">
+            等待发车
+        </view>
+    </view>
+  </scroll-view>
+</view>
