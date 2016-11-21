@@ -23,7 +23,6 @@ Page({
         var stations = res.data.lineResults0;
         stations.start = res.data.busLine.start_stop;
         stations.end = res.data.busLine.end_stop;
-        console.error(res.data.busLine);
         vm.setData({
           name: name,
           stations: stations,
@@ -33,6 +32,27 @@ Page({
         });
       }
     });
+  },
+
+  onClickSwitch: function(e) {
+    var vm = this;
+    if (!vm.data.direction) {
+      var temp = vm.data.stationsRight;
+      temp.start = vm.data.busInfo.end_stop;
+      temp.end = vm.data.busInfo.start_stop;
+      vm.setData({
+        stations: temp,
+        direction: 1
+      });
+    } else {
+      var temp = vm.data.stationsLeft;
+      temp.start = vm.data.busInfo.start_stop;
+      temp.end = vm.data.busInfo.end_stop;
+      vm.setData({
+        stations: temp,
+        direction: 0
+      });
+    }
   },
 
   bindClickStop: function(e) {
@@ -52,7 +72,7 @@ Page({
           var terminal = res.data.cars[0].terminal;
           var stopdis = res.data.cars[0].stopdis;
           var time = res.data.cars[0].time;
-          console.error(typeof time)
+          console.error(typeof time, time)
 
           if (time !== 'null') {
             tips = terminal+'还有'+stopdis+'站，约'+Math.ceil(time / 60)+'分钟';

@@ -1,16 +1,16 @@
 <view class="bus-detail">
   <view class="header-wrapper">
     <view class="bus-name">{{name}}</view>
-    <view class="bus-start-end">
+    <view class="bus-start-end" bindtap="onClickSwitch">
         {{stations.start}} > {{stations.end}}
     </view>
-    <image class="icon-switch" src="/image/switch.png" mode="aspectFill" />
+    <image class="icon-switch" bindtap="onClickSwitch" src="/image/switch.png" mode="aspectFill" />
   </view>
   <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
     <view wx:for="{{stations.stops}}" wx:key="{{ index }}"  wx:for-item="item" class="stops-items">
-        <button class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
+        <view class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
             {{index+1}}.  {{item.zdmc}}
-        </button>
+        </view>
         <view class="{{ stopId === item.id ? 'bellows-wrapper' : 'hidden' }}">
             {{tips.length ? tips : '等待发车'}}
         </view>

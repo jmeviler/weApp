@@ -1,6 +1,6 @@
 <view class="container-bus">
   <view class="line-name">
     <input class="bus-name" type="text" placeholder="请输入线路名称" bindinput="bindChangeInput" />
-    <navigator url="busDetail?name={{name}}" class="bus-search">查询</navigator>
+    <button class="bus-search" type="primary" plain bindtap="bindOnSearch" loading="{{loading}}">查询</button>
   </view>
 </view>

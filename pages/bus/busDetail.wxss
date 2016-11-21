@@ -7,16 +7,19 @@
 .header-wrapper {
     background: #00aaff;
     padding: .625rem;
+    text-align: center;
 }
 
 .bus-name {
-    font-size: .75rem;
+    font-size: 1rem;
     text-align: center;
+    margin-bottom: .625rem;
 }
 
 .bus-start-end {
     font-size: .9375rem;
     display: inline-block;
+    padding: .625rem;
 }
 
 .icon-switch {
@@ -24,23 +27,29 @@
     height: 24px;
     right: .625rem;
     position: absolute;
+    margin-top: .4rem;
 }
 
 .scroll-view_H {
-    height: calc(100% - 85px);
+    height: calc(100% - 5.9375rem);
     padding: .625rem 0;
 }
 
 .stops-items {
-    padding: 0 .625rem;
+    padding: .3125rem 0;
+    margin: .3125rem .625rem 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .stop-item {
     text-align: left;
     font-size: .9375rem;
+    padding: .3125rem;
 }
 
 .bellows-wrapper {
+    font-size: .75rem;
     padding: .3125rem .625rem;
 }
 
