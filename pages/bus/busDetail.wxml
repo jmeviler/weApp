@@ -11,8 +11,8 @@
         <button class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
             {{index+1}}.  {{item.zdmc}}
         </button>
-        <view class="{{ stopId !== item.id ? 'bellows-wrapper' : 'hidden' }}">
-            等待发车
+        <view class="{{ stopId === item.id ? 'bellows-wrapper' : 'hidden' }}">
+            {{tips.length ? tips : '等待发车'}}
         </view>
     </view>
   </scroll-view>

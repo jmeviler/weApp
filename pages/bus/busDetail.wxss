@@ -39,7 +39,11 @@
     text-align: left;
     font-size: .9375rem;
 }
- 
+
 .bellows-wrapper {
     padding: .3125rem .625rem;
+}
+
+.hidden {
+    display: none;
 }
