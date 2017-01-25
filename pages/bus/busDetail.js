@@ -7,7 +7,8 @@ Page({
     busInfo: {},
     stations: {},
     stationsLeft: {},
-    stationsRight: {}
+    stationsRight: {},
+    noShow: true,
   },
   onLoad: function (option) {
     var vm = this;
@@ -20,16 +21,46 @@ Page({
           'Content-Type': 'application/json'
       },
       success: function(res) {
-        var stations = res.data.lineResults0;
-        stations.start = res.data.busLine.start_stop;
-        stations.end = res.data.busLine.end_stop;
-        vm.setData({
-          name: name,
-          stations: stations,
-          busInfo: res.data.busLine,
-          stationsLeft: res.data.lineResults0,
-          stationsRight: res.data.lineResults1
-        });
+        wx.showModal({
+          title: '提示',
+          content: '哎呀，服务器开小差了～刷新一下吧～',
+          showCancel: false,
+          success: function(res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            }
+          }
+        })
+        if (res.statusCode === 200) {
+          var stations = res.data.lineResults0;
+          stations.start = res.data.busLine.start_stop;
+          stations.end = res.data.busLine.end_stop;
+          vm.setData({
+            name: name,
+            noShow: false,
+            stations: stations,
+            busInfo: res.data.busLine,
+            stationsLeft: res.data.lineResults0,
+            stationsRight: res.data.lineResults1
+          });
+        } else {
+          vm.setData({
+            noShow: true
+          })
+        }
+      }
+    });
+  },
+
+  showModal: function() {
+    wx.showModal({
+      title: '提示',
+      content: '哎呀，服务器开小差了～刷新一下吧～',
+      showCancel: false,
+      success: function(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+        }
       }
     });
   },
@@ -58,8 +89,14 @@ Page({
   bindClickStop: function(e) {
       var vm = this;
       var name = vm.data.name;
+      if (vm.data.stopId === e.target.id) return;
       var lineId = vm.data.busInfo.line_id;
       var stopId = e.target.id;
+
+      wx.showToast({
+        title: '加载中',
+        icon: 'loading',
+      });
 
       wx.request({
       url: 'https://robot.leanapp.cn/api/busstop/'+name+'/'+lineId+'/'+stopId+'/1',
@@ -83,6 +120,8 @@ Page({
           stopId: stopId,
           tips: tips
         });
+
+        wx.hideToast();
       }
     });
   }

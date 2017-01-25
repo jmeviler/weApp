@@ -1,4 +1,4 @@
-<view class="bus-detail">
+<view wx:if="{{!noShow}}" class="bus-detail">
   <view class="header-wrapper">
     <view class="bus-name">{{name}}</view>
     <view class="bus-start-end" bindtap="onClickSwitch">

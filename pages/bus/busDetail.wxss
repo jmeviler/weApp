@@ -5,21 +5,23 @@
 }
 
 .header-wrapper {
-    background: #00aaff;
+    background: #fff;
     padding: .625rem;
-    text-align: center;
+   border-bottom: 1rpx solid #D7D6DC;
 }
 
 .bus-name {
-    font-size: 1rem;
-    text-align: center;
-    margin-bottom: .625rem;
+    font-size: .9375rem;
 }
 
 .bus-start-end {
     font-size: .9375rem;
     display: inline-block;
-    padding: .625rem;
+    padding-top: .625rem;
+    max-width:90%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 
 .icon-switch {
@@ -31,15 +33,19 @@
 }
 
 .scroll-view_H {
-    height: calc(100% - 5.9375rem);
-    padding: .625rem 0;
+    height: calc(100% - 165rpx);
+    margin: .3125rem 0;
 }
 
 .stops-items {
     padding: .3125rem 0;
     margin: .3125rem .625rem 0;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 5px;    
+}
+
+.stops-items:last-child {
+    margin-bottom: .3125rem; 
 }
 
 .stop-item {

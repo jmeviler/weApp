@@ -1,3 +1,5 @@
+import { baseUrl } from '../../utils/constant';
+
 //logs.js
 var util = require('../../utils/util.js')
 Page({

@@ -1,4 +1,6 @@
 var util = require('../../utils/util.js')
+import { baseUrl } from '../../utils/constant';
+import { getData } from '../../utils/restUtil';
 
 Page({
   data: {
@@ -12,17 +14,11 @@ Page({
     vm.setData({
         loading: !vm.data.loading
     });
-    wx.request({
-      url: 'https://robot.leanapp.cn/api/weather',
-      header: {
-          'Content-Type': 'application/json'
-      },
-      success: function(res) {
-        vm.setData({
-            weather:res.data,
-            loading: !vm.data.loading
-        });
-      }
+    getData('weather', {}, function(data){
+      vm.setData({
+        weather: data,
+        loading: !vm.data.loading
+      });
     });
   },
 
@@ -37,16 +33,10 @@ Page({
 
   onShow: function () {
     var vm = this;
-    wx.request({
-      url: 'https://robot.leanapp.cn/api/weather',
-      header: {
-          'Content-Type': 'application/json'
-      },
-      success: function(res) {
-        vm.setData({
-            weather:res.data
-        });
-      }
+    getData('weather', {}, function(data){
+      vm.setData({
+        weather: data
+      });
     });
   }
 })
