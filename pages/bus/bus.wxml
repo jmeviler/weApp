@@ -16,14 +16,25 @@
       <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>
   <scroll-view  class="weui-cells searchbar-result scroll-view_H" scroll-y="true" style="width: 100%" wx:if="{{matchedBus.length}}">
-    <view wx:for="{{matchedBus}}" wx:key="{{index}}"  
+    <view wx:for="{{matchedBus}}" wx:key="{{index}}"
         id="{{item}}" bindtap="selectBusName"
-        wx:for-item="item" class="" class="weui-cell__bd weui-cell"  
+        wx:for-item="item" class="weui-cell__bd weui-cell"
         hover-class="weui-cell_active">
         {{item}}
     </view>
   </scroll-view>
   <view class="line-name">
     <button class="bus-search" type="primary" plain bindtap="bindOnSearch" loading="{{loading}}">查询</button>
+  </view>
+
+  <view class="history-items" hidden="{{!history.length}}" >
+    <view class="history-tips">最近查询:
+      <view class="clear-history" bindtap="bindOnClearAll">清空</view>
+    </view>
+    <view wx:for="{{history}}" wx:key="{{index}}"
+      data-name="{{item}}" wx:for-item="item"
+      class="history-item" bindtap="bindOnClickHistory">
+      {{item}}
+    </view>
   </view>
 </view>

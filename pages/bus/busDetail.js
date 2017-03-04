@@ -21,16 +21,6 @@ Page({
           'Content-Type': 'application/json'
       },
       success: function(res) {
-        wx.showModal({
-          title: '提示',
-          content: '哎呀，服务器开小差了～刷新一下吧～',
-          showCancel: false,
-          success: function(res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-            }
-          }
-        })
         if (res.statusCode === 200) {
           var stations = res.data.lineResults0;
           stations.start = res.data.busLine.start_stop;
@@ -67,31 +57,33 @@ Page({
 
   onClickSwitch: function(e) {
     var vm = this;
+    var stations = {};
+    var direction = 0;
     if (!vm.data.direction) {
-      var temp = vm.data.stationsRight;
-      temp.start = vm.data.busInfo.end_stop;
-      temp.end = vm.data.busInfo.start_stop;
-      vm.setData({
-        stations: temp,
-        direction: 1
-      });
+      stations = vm.data.stationsRight;
+      stations.start = vm.data.busInfo.end_stop;
+      stations.end = vm.data.busInfo.start_stop;
+      direction = 1;
     } else {
-      var temp = vm.data.stationsLeft;
-      temp.start = vm.data.busInfo.start_stop;
-      temp.end = vm.data.busInfo.end_stop;
-      vm.setData({
-        stations: temp,
-        direction: 0
-      });
+      stations = vm.data.stationsLeft;
+      stations.start = vm.data.busInfo.start_stop;
+      stations.end = vm.data.busInfo.end_stop;
     }
+
+    vm.setData({
+     stations: stations,
+     direction: direction,
+     stopId: '',
+     tips: ''
+    });
   },
 
   bindClickStop: function(e) {
       var vm = this;
       var name = vm.data.name;
-      if (vm.data.stopId === e.target.id) return;
       var lineId = vm.data.busInfo.line_id;
       var stopId = e.target.id;
+      var direction = vm.data.direction;
 
       wx.showToast({
         title: '加载中',
@@ -99,7 +91,7 @@ Page({
       });
 
       wx.request({
-      url: 'https://robot.leanapp.cn/api/busstop/'+name+'/'+lineId+'/'+stopId+'/1',
+      url: 'https://robot.leanapp.cn/api/busstop/'+name+'/'+lineId+'/'+stopId+'/'+direction,
       header: {
           'Content-Type': 'application/json'
       },
@@ -109,10 +101,9 @@ Page({
           var terminal = res.data.cars[0].terminal;
           var stopdis = res.data.cars[0].stopdis;
           var time = res.data.cars[0].time;
-          console.error(typeof time, time)
 
           if (time !== 'null') {
-            tips = terminal+'还有'+stopdis+'站，约'+Math.ceil(time / 60)+'分钟';
+            tips = '车牌:'+terminal+', 剩余'+stopdis+'站, 约'+Math.ceil(time / 60)+'分钟';
           }
         }
 

@@ -1,13 +1,13 @@
 .container-bus {
-    width: 100%; 
+    width: 100%;
     height: 100%;
     background-color: #FBF9FE;
     font-size: .9375rem;
 }
 
 .line-name {
-    padding: .75rem .625rem; 
-    background-color: #FFF; 
+    padding: .75rem .625rem;
+    background-color: #FFF;
     border-bottom: 1px solid #ddd;
 }
 
@@ -116,4 +116,28 @@
 .weui-cell{
     padding: 12px 15px 12px 35px;
     border-bottom: 1rpx solid #D7D6DC;
+}
+.history-items {
+  font-size: 28rpx;
+}
+.history-tips{
+  margin: 30rpx 0;
+  text-align: left;
+  padding-left:30rpx;
+}
+.clear-history{
+  display: inline-block;
+  float:right;
+  margin-right:30rpx;
+  color:blue;
+}
+.history-item {
+  width: 30%;
+  line-height: 56rpx;
+  text-align: center;
+  display: inline-block;
+  border: 1px solid #D7D6DC;
+  border-radius: 4px;
+  background: #fff;
+  margin: 10rpx 1%;
 }

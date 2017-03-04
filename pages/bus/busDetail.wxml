@@ -1,18 +1,23 @@
 <view wx:if="{{!noShow}}" class="bus-detail">
   <view class="header-wrapper">
-    <view class="bus-name">{{name}}</view>
-    <view class="bus-start-end" bindtap="onClickSwitch">
-        {{stations.start}} > {{stations.end}}
+    <view style="text-align: center">
+      <view class="bus-name">{{name}}</view>
     </view>
-    <image class="icon-switch" bindtap="onClickSwitch" src="/image/switch.png" mode="aspectFill" />
+    <view style="text-align: center">
+      <view class="bus-start-end" bindtap="onClickSwitch">
+        <view class="station">{{stations.start}}</view>
+        <image class="icon-switch" bindtap="onClickSwitch" src="/image/switch.png" mode="aspectFill" />
+        <view class="station">{{stations.end}}</view>
+      </view>
+    </view>
   </view>
   <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
     <view wx:for="{{stations.stops}}" wx:key="{{ index }}"  wx:for-item="item" class="stops-items">
         <view class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
             {{index+1}}.  {{item.zdmc}}
         </view>
-        <view class="{{ stopId === item.id ? 'bellows-wrapper' : 'hidden' }}">
-            {{tips.length ? tips : '等待发车'}}
+        <view class="{{ stopId === item.id ? 'bellows-wrapper' : 'hidden' }}" id="{{item.id}}" bindtap="bindClickStop">
+            {{tips.length ? tips : '尚未发车,请耐心等待~'}}
         </view>
     </view>
   </scroll-view>
