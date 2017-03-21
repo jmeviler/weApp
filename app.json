@@ -1,10 +1,10 @@
 {
   "pages":[
+    "pages/bus/bus",
     "pages/index/index",
     "pages/logs/logs",
     "pages/weather/weather",
     "pages/express/express",
-    "pages/bus/bus",
     "pages/bus/busDetail"
   ],
   "window":{
@@ -19,15 +19,15 @@
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [{
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/bus/bus",
       "iconPath": "image/icon_component.png",
       "selectedIconPath": "image/icon_component_HL.png",
-      "text": "首页"
+      "text": "公交"
     }, {
-      "pagePath": "pages/bus/bus",
+      "pagePath": "pages/index/index",
       "iconPath": "image/icon_API.png",
       "selectedIconPath": "image/icon_API_HL.png",
-      "text": "公交"
+      "text": "应用"
     }]
   },
   "debug": true
