@@ -28,13 +28,13 @@
   </view>
 
   <view class="history-items" hidden="{{!history.length}}" >
-    <view class="history-tips">最近查询:
-      <view class="clear-history" bindtap="bindOnClearAll">清空</view>
-    </view>
     <view wx:for="{{history}}" wx:key="{{index}}"
       data-name="{{item}}" wx:for-item="item"
       class="history-item" bindtap="bindOnClickHistory">
-      {{item}}
+      <image class="icon-bus" src="/image/bus.png" mode="aspectFill" />
+      <view class="history-name">{{item}}</view>
+      <image class="icon-trash" src="/image/trash.png" data-name="{{item}}" catchtap="bindOnClearHistoryItem" mode="aspectFill" />
     </view>
+    <view class="history-item clear-history" bindtap="bindOnClearAll">清空历史纪录</view>
   </view>
 </view>

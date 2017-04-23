@@ -119,25 +119,46 @@
 }
 .history-items {
   font-size: 28rpx;
+  background:#fff;
+  margin-top: 30rpx;
 }
 .history-tips{
   margin: 30rpx 0;
   text-align: left;
   padding-left:30rpx;
 }
+.history-item {
+  width: calc(100% - 30rpx);
+  line-height:70rpx;
+  display:inline-block;
+  border-bottom:1px solid #dedede;
+  background:#fff;
+  margin-left:30rpx;
+}
+.icon-bus {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 20px;
+  vertical-align: middle;
+  margin-right: 20rpx;
+}
+.history-name {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 6rpx;
+}
+.icon-trash {
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: baseline;
+  float: right;
+  padding-top: 10rpx;
+  padding-right: 30rpx;
+}
 .clear-history{
   display: inline-block;
-  float:right;
-  margin-right:30rpx;
-  color:blue;
-}
-.history-item {
-  width: 30%;
-  line-height: 56rpx;
-  text-align: center;
-  display: inline-block;
-  border: 1px solid #D7D6DC;
-  border-radius: 4px;
-  background: #fff;
-  margin: 10rpx 1%;
+  color: #D7D6DC;
+  border-bottom: 0;
+  text-align:center;
+  margin-left:0;
 }

@@ -84,13 +84,30 @@ Page({
     });
   },
 
+  bindOnClearHistoryItem: function(e) {
+    var history = this.data.history;
+    var index = history.findIndex(i => i === e.target.dataset.name);
+    history.splice(index, 1);
+    wx.setStorage({
+      key: "history",
+      data: history
+    });
+    this.setData({
+      history
+    });
+  },
+
   bindOnSearch: function () {
     var history = this.data.history;
     if (this.data.inputVal) {
       if (!history.includes(this.data.inputVal)) {
+        console.error(history.length >= 10)
+        if (history.length >= 10) {
+          history.splice(history.length - 1, 1);
+        }
         history.unshift(this.data.inputVal);
       }
-
+      this.setData({ history });
       wx.setStorage({
         key: "history",
         data: history
