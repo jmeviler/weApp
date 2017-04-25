@@ -1,30 +1,30 @@
 .container-bus {
-    width: 100%;
-    height: 100%;
-    background-color: #FBF9FE;
-    font-size: .9375rem;
+  width: 100%;
+  height: 100%;
+  background-color: #FBF9FE;
+  font-size: .9375rem;
 }
 
 .line-name {
-    padding: .75rem .625rem;
-    background-color: #FFF;
-    border-bottom: 1px solid #ddd;
+  padding: .75rem .625rem;
+  background-color: #FFF;
+  border-bottom: 1px solid #ddd;
 }
 
 .bus-search {
-    width:100%;
-    color:#1aad19;
-    text-align:center;
-    border:1px solid #1aad19;
-    background-color:transparent;
-    font-size:14px;
-    padding: 5px 0;
-    margin-left:auto;
-    margin-right:auto;
-    box-sizing:border-box;
-    text-decoration:none;
-    border-radius:5px;
-    line-height: 40rpx;
+  width:100%;
+  color:#1aad19;
+  text-align:center;
+  border:1px solid #1aad19;
+  background-color:transparent;
+  font-size:14px;
+  padding: 5px 0;
+  margin-left:auto;
+  margin-right:auto;
+  box-sizing:border-box;
+  text-decoration:none;
+  border-radius:5px;
+  line-height: 40rpx;
 }
 .weui-search-bar {
   position: relative;
@@ -55,7 +55,7 @@
   position: relative;
   -webkit-box-flex: 1;
   -webkit-flex: auto;
-          flex: auto;
+  flex: auto;
   border-radius: 5px;
   background: #FFFFFF;
   border: 1rpx solid #E6E6EA;
@@ -100,22 +100,22 @@
   white-space: nowrap;
 }
 .searchbar-result{
-    margin-top: 0;
-    font-size: 14px;
-    position: fixed;
-    width: 100%;
-    background: #fff;
-    z-index: 10;
+  margin-top: 0;
+  font-size: 14px;
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  z-index: 10;
 }
 .scroll-view_H{
   height: calc(100% - 48px);
 }
 .searchbar-result:before{
-    display: none;
+  display: none;
 }
 .weui-cell{
-    padding: 12px 15px 12px 35px;
-    border-bottom: 1rpx solid #D7D6DC;
+  padding: 12px 15px 12px 35px;
+  border-bottom: 1rpx solid #D7D6DC;
 }
 .history-items {
   font-size: 28rpx;
@@ -125,7 +125,7 @@
 .history-tips{
   margin: 30rpx 0;
   text-align: left;
-  padding-left:30rpx;
+  padding-left: 30rpx;
 }
 .history-item {
   width: calc(100% - 30rpx);

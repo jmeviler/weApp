@@ -1,70 +1,70 @@
 .bus-detail {
-    width: 100%;
-    height: 100%;
-    border-top: 1px solid #ddd;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #ddd;
 }
 
 .header-wrapper {
-    background: #fff;
-    padding: .625rem;
-    border-bottom: 1rpx solid #D7D6DC;
+  background: #fff;
+  padding: .625rem;
+  border-bottom: 1rpx solid #D7D6DC;
 }
 
 .bus-name {
-    font-size: .9375rem;
-    font-weight: bold;
-    display: inline-block;
-    padding: 10rpx 12rpx;
-    border-bottom: 3rpx solid #000;
+  font-size: .9375rem;
+  font-weight: bold;
+  display: inline-block;
+  padding: 10rpx 12rpx;
+  border-bottom: 3rpx solid #000;
 }
 
 .bus-start-end {
-    font-size: .9375rem;
-    display: inline-block;
-    padding-top: .625rem;
-    max-width:90%;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+  font-size: .9375rem;
+  display: inline-block;
+  padding-top: .625rem;
+  max-width:90%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 .station {
-    display: inline-block;
+  display: inline-block;
 }
 
 .icon-switch {
-    width: 36rpx;
-    height: 24rpx;
-    padding: 0 10rpx;
+  width: 36rpx;
+  height: 24rpx;
+  padding: 0 10rpx;
 }
 
 .scroll-view_H {
-    height: calc(100% - 165rpx);
-    margin: .3125rem 0;
+  height: calc(100% - 165rpx);
+  margin: .3125rem 0;
 }
 
 .stops-items {
-    padding: .3125rem 0;
-    margin: .3125rem .625rem 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  padding: .3125rem 0;
+  margin: .3125rem .625rem 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .stops-items:last-child {
-    margin-bottom: .3125rem;
+  margin-bottom: .3125rem;
 }
 
 .stop-item {
-    text-align: left;
-    font-size: .9375rem;
-    padding: .3125rem;
+  text-align: left;
+  font-size: .9375rem;
+  padding: .3125rem;
 }
 
 .bellows-wrapper {
-    font-size: .75rem;
-    padding: .3125rem .625rem;
+  font-size: .75rem;
+  padding: .3125rem .625rem;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }

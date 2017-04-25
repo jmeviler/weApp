@@ -17,9 +17,9 @@
   </view>
   <scroll-view  class="weui-cells searchbar-result scroll-view_H" scroll-y="true" style="width: 100%" wx:if="{{matchedBus.length}}">
     <view wx:for="{{matchedBus}}" wx:key="{{index}}"
-        id="{{item}}" bindtap="selectBusName"
-        wx:for-item="item" class="weui-cell__bd weui-cell"
-        hover-class="weui-cell_active">
+      id="{{item}}" bindtap="selectBusName"
+      wx:for-item="item" class="weui-cell__bd weui-cell"
+      hover-class="weui-cell_active">
         {{item}}
     </view>
   </scroll-view>
@@ -32,7 +32,7 @@
       data-name="{{item}}" wx:for-item="item"
       class="history-item" bindtap="bindOnClickHistory">
       <image class="icon-bus" src="/image/bus.png" mode="aspectFill" />
-      <view class="history-name">{{item}}</view>
+      <view class="history-name" data-name="{{item}}" bindtap="bindOnClickHistory">{{item}}</view>
       <image class="icon-trash" src="/image/trash.png" data-name="{{item}}" catchtap="bindOnClearHistoryItem" mode="aspectFill" />
     </view>
     <view class="history-item clear-history" bindtap="bindOnClearAll">清空历史纪录</view>
