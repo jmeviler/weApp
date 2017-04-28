@@ -24,6 +24,12 @@ App({
       })
     }
   },
+  showLoading(title = '查询中', icon = 'loading') {
+    wx.showToast({ title, icon });
+  },
+  hideLoading() {
+    wx.hideToast();
+  },
   globalData:{
     userInfo:null
   }

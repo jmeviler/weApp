@@ -2,7 +2,6 @@
   "pages":[
     "pages/bus/bus",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/weather/weather",
     "pages/express/express",
     "pages/bus/busDetail"
@@ -10,7 +9,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "小程序",
+    "navigationBarTitleText": "应用",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {

@@ -1,3 +1,4 @@
+var app = getApp()
 Page({
   data: {
     inputShowed: false,
@@ -9,6 +10,10 @@ Page({
 
   onLoad: function () {
     var vm = this;
+    app.getUserInfo(function(userInfo){
+      vm.setData({ userInfo });
+      console.error(userInfo);
+    })
     if (!this.data.names.length) {
       wx.request({
         url: 'https://robot.leanapp.cn/bus/names/all',
@@ -29,8 +34,7 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: '上海实时公交',
-      desc: '上海实时公交查询，从此不在因等车而烦恼',
+      title: '上海实时公交查询',
       path: '/pages/bus/bus'
     }
   },
@@ -66,7 +70,6 @@ Page({
   },
 
   inputTyping: function (e) {
-    console.error(this.data.names)
     this.setData({
       inputVal: e.detail.value,
       matchedBus: this.checkBusName(this.data.names, e.detail.value)

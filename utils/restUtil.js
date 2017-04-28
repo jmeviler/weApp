@@ -1,23 +1,18 @@
 import { baseUrl } from './constant';
 
-export const getData = (url, params = {}, cb) => {
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-    });
+export const get = (url, success, fail) => {
+  wx.request({
+    url: baseUrl + url,
+    header: { 'Content-Type': 'application/json' },
+    success: function(res) {
+      success(res.data);
+    },
+    fail: function(error) {
+      fail(error);
+    }
+  });
+}
 
-    wx.request({
-      url: baseUrl + url,
-      data: params,
-      header: {
-          'Content-Type': 'application/json'
-      },
-      success: function(res) {
-          wx.hideToast();
-          cb(res.data);
-      },
-      fail: function(error) {
-        console.error(error);
-      }
-    });
+export const post = (url, ) => {
+
 }

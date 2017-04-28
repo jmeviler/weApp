@@ -1,3 +1,7 @@
+'use strict';
+import * as Rest from '../../utils/restUtil';
+const App = getApp();
+
 Page({
   data: {
     name: '',
@@ -42,6 +46,15 @@ Page({
     });
   },
 
+  onShareAppMessage() {
+    const { name, busInfo } = this.data;
+    const { start_stop, end_stop } = busInfo;
+    return {
+      title: name + '-上海Bus',
+      path: 'pages/bus/busDetail?name=' + name
+    }
+  },
+
   showModal: function() {
     wx.showModal({
       title: '提示',
@@ -59,15 +72,16 @@ Page({
     var vm = this;
     var stations = {};
     var direction = 0;
+    const { stationsRight, stationsLeft, busInfo } = vm.data;
     if (!vm.data.direction) {
-      stations = vm.data.stationsRight;
-      stations.start = vm.data.busInfo.end_stop;
-      stations.end = vm.data.busInfo.start_stop;
+      stations = stationsRight;
+      stations.start = busInfo.end_stop;
+      stations.end = busInfo.start_stop;
       direction = 1;
     } else {
-      stations = vm.data.stationsLeft;
-      stations.start = vm.data.busInfo.start_stop;
-      stations.end = vm.data.busInfo.end_stop;
+      stations = stationsLeft;
+      stations.start = busInfo.start_stop;
+      stations.end = busInfo.end_stop;
     }
 
     vm.setData({
@@ -79,41 +93,25 @@ Page({
   },
 
   bindClickStop: function(e) {
-      var vm = this;
-      var name = vm.data.name;
-      var lineId = vm.data.busInfo.line_id;
-      var stopId = e.target.id;
-      var direction = vm.data.direction;
+    const vm = this;
+    const { name, direction, busInfo } = vm.data;
+    const lineId = busInfo.line_id;
+    const stopId = e.target.id;
 
-      wx.showToast({
-        title: '加载中',
-        icon: 'loading',
-      });
-
-      wx.request({
-      url: 'https://robot.leanapp.cn/api/busstop/'+name+'/'+lineId+'/'+stopId+'/'+direction,
-      header: {
-          'Content-Type': 'application/json'
-      },
-      success: function(res) {
-        var tips = '';
-        if (res.data.cars.length) {
-          var terminal = res.data.cars[0].terminal;
-          var stopdis = res.data.cars[0].stopdis;
-          var time = res.data.cars[0].time;
-
+    App.showLoading();
+    Rest.get(
+      '/api/busstop/' + name + '/' + lineId + '/' + stopId + '/' + direction,
+      (data) => {
+        let tips = '';
+        if (data.cars.length) {
+          const { terminal, stopdis, time } = data.cars[0];
           if (time !== 'null') {
             tips = '车牌:'+terminal+', 剩余'+stopdis+'站, 约'+Math.ceil(time / 60)+'分钟';
           }
         }
-
-        vm.setData({
-          stopId: stopId,
-          tips: tips
-        });
-
-        wx.hideToast();
+        vm.setData({ stopId, tips });
+        App.hideLoading();
       }
-    });
+    );
   }
 })
