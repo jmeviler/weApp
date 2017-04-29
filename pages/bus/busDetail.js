@@ -20,35 +20,24 @@ Page({
     if (!name.length) return;
 
     wx.request({
-      url: 'https://robot.leanapp.cn/api/bus/'+name,
-      header: {
-          'Content-Type': 'application/json'
-      },
+      url: 'https://robot.leanapp.cn/api/bus/' + name,
+      header: { 'Content-Type': 'application/json' },
       success: function(res) {
         if (res.statusCode === 200) {
-          var stations = res.data.lineResults0;
-          stations.start = res.data.busLine.start_stop;
-          stations.end = res.data.busLine.end_stop;
-          vm.setData({
-            name: name,
-            noShow: false,
-            stations: stations,
-            busInfo: res.data.busLine,
-            stationsLeft: res.data.lineResults0,
-            stationsRight: res.data.lineResults1
-          });
+          const { lineResults0, lineResults1, busLine } = res.data;
+          const { start_stop, end_stop } = busLine;
+          const stationsLeft = Object.assign({}, lineResults0, { start: start_stop, end: end_stop });
+          const stationsRight = Object.assign({}, lineResults1, { start: end_stop, end: start_stop });
+          vm.setData({ name, stations: stationsLeft, stationsLeft, stationsRight, noShow: false, busInfo: busLine });
         } else {
-          vm.setData({
-            noShow: true
-          })
+          vm.setData({ noShow: true });
         }
       }
     });
   },
 
   onShareAppMessage() {
-    const { name, busInfo } = this.data;
-    const { start_stop, end_stop } = busInfo;
+    const { name } = this.data;
     return {
       title: name + '-上海Bus',
       path: 'pages/bus/busDetail?name=' + name
@@ -69,27 +58,11 @@ Page({
   },
 
   onClickSwitch: function(e) {
-    var vm = this;
-    var stations = {};
-    var direction = 0;
-    const { stationsRight, stationsLeft, busInfo } = vm.data;
-    if (!vm.data.direction) {
-      stations = stationsRight;
-      stations.start = busInfo.end_stop;
-      stations.end = busInfo.start_stop;
-      direction = 1;
-    } else {
-      stations = stationsLeft;
-      stations.start = busInfo.start_stop;
-      stations.end = busInfo.end_stop;
-    }
-
-    vm.setData({
-     stations: stations,
-     direction: direction,
-     stopId: '',
-     tips: ''
-    });
+    const vm = this;
+    const { stationsRight, stationsLeft } = vm.data;
+    const stations = !vm.data.direction ? stationsRight : stationsLeft;
+    const direction = !vm.data.direction ? 1 : 0;
+    vm.setData({ stations, direction, stopId: '', tips: '' });
   },
 
   bindClickStop: function(e) {
