@@ -3,7 +3,16 @@
       <view class="weui-search-bar__form">
           <view class="weui-search-bar__box">
               <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-              <input type="text" class="weui-search-bar__input" placeholder="请输入线路名称" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+              <input
+                type="text"
+                class="weui-search-bar__input"
+                confirm-type='search'
+                placeholder="请输入线路名称"
+                value="{{inputVal}}"
+                focus="{{inputShowed}}"
+                bindinput="inputTyping"
+                bindconfirm="bindOnSearch"
+              />
               <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
                   <icon type="clear" size="14"></icon>
               </view>
@@ -13,7 +22,6 @@
               <view class="weui-search-bar__text">请输入线路名称</view>
           </label>
       </view>
-      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>
   <scroll-view  class="weui-cells searchbar-result scroll-view_H" scroll-y="true" style="width: 100%" wx:if="{{matchedBus.length}}">
     <view wx:for="{{matchedBus}}" wx:key="{{index}}"

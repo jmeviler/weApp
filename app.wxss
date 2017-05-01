@@ -8,6 +8,6 @@ page {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 200rpx 0;
+  padding:200rpx 0 150rpx;
   box-sizing: border-box;
-} 
+}

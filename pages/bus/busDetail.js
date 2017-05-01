@@ -30,6 +30,7 @@ Page({
           const stationsRight = Object.assign({}, lineResults1, { start: end_stop, end: start_stop });
           vm.setData({ name, stations: stationsLeft, stationsLeft, stationsRight, noShow: false, busInfo: busLine });
         } else {
+          App.showModal('提示', '哎呀，服务器开小差了～刷新一下吧～', () => { wx.navigateBack() });
           vm.setData({ noShow: true });
         }
       }
@@ -42,19 +43,6 @@ Page({
       title: name + '-上海Bus',
       path: 'pages/bus/busDetail?name=' + name
     }
-  },
-
-  showModal: function() {
-    wx.showModal({
-      title: '提示',
-      content: '哎呀，服务器开小差了～刷新一下吧～',
-      showCancel: false,
-      success: function(res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-        }
-      }
-    });
   },
 
   onClickSwitch: function(e) {

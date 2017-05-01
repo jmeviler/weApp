@@ -6,9 +6,8 @@
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+  width: 200rpx;
+  height: 200rpx;
   border-radius: 50%;
 }
 
@@ -18,4 +17,22 @@
 
 .usermotto {
   margin-bottom: 50rpx;
+}
+
+.tools-wrapper {
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+}
+
+.tools-item {
+  width: 33%;
+  padding:24rpx 0;
+  display: inline-block;
+}
+
+.tool-icon {
+  width: 40px;
+  height: 40px;
+  padding-bottom: 10px;
 }

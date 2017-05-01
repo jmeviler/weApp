@@ -8,16 +8,13 @@ Page({
     data: [],
     loading: false
   },
-  onLoad: function () {
-    
-  },
 
   bindExpressChange: function (e) {
-      var vm = this;
-      console.log(vm.data.key[e.detail.value]);
-      vm.setData({
-        index: e.detail.value
-      });
+    var vm = this;
+    console.log(vm.data.key[e.detail.value]);
+    vm.setData({
+      index: e.detail.value
+    });
   },
 
   bindChangeInput: function(e) {
@@ -33,21 +30,18 @@ Page({
     if (!postId.length || !type.length) return;
 
     vm.setData({
-        loading: !vm.data.loading
+      loading: !vm.data.loading
     });
 
     wx.request({
       url: 'https://robot.leanapp.cn/api/express/'+type+'/'+postId,
-      header: {
-          'Content-Type': 'application/json'
-      },
+      header: { 'Content-Type': 'application/json' },
       success: function(res) {
-        vm.setData({ 
+        vm.setData({
           loading: !vm.data.loading,
           data: res.data
         });
-        console.error(res.data.data);
       }
     });
-  } 
+  }
 })

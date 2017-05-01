@@ -1,23 +1,27 @@
-//app.js
+import * as CONSTANT from './utils/constant';
+import * as Rest from './utils/restUtil';
+
 App({
   onLaunch: function () {
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    const allLines = wx.getStorageSync('allLines');
+    if (!allLines.length) {
+      Rest.get('/bus/names/all', (data) => {
+        const lines = data.names.split(',');
+        wx.setStorage({ key: "allLines", data: lines });
+      });
+    }
   },
   getUserInfo:function(cb){
-    var that = this
+    const vm = this;
     if(this.globalData.userInfo){
       typeof cb == "function" && cb(this.globalData.userInfo)
     }else{
-      //调用登录接口
       wx.login({
         success: function () {
           wx.getUserInfo({
             success: function (res) {
-              that.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo)
+              vm.globalData.userInfo = res.userInfo
+              typeof cb == "function" && cb(vm.globalData.userInfo)
             }
           })
         }
@@ -30,7 +34,19 @@ App({
   hideLoading() {
     wx.hideToast();
   },
-  globalData:{
-    userInfo:null
+  showModal(title = CONSTANT.MODAL_TIPS, content = CONSTANT.SERVER_ERROR, cb) {
+    wx.showModal({
+      title,
+      content,
+      showCancel: false,
+      success: function(res) {
+        if (res.confirm) {
+          cb();
+        }
+      }
+    });
+  },
+  globalData: {
+    userInfo: null
   }
 })

@@ -1,33 +1,28 @@
-var app = getApp()
+const App = getApp();
+import * as Rest from '../../utils/restUtil';
+
 Page({
   data: {
     inputShowed: false,
     inputVal: "",
     matchedBus: [],
     history: wx.getStorageSync('history') || [],
-    names: wx.getStorageSync('Lines') || []
+    names: wx.getStorageSync('allLines') || []
   },
 
   onLoad: function () {
     var vm = this;
-    app.getUserInfo(function(userInfo){
+    App.getUserInfo((userInfo) => {
       vm.setData({ userInfo });
-      console.error(userInfo);
-    })
-    if (!this.data.names.length) {
-      wx.request({
-        url: 'https://robot.leanapp.cn/bus/names/all',
-        header: {
-            'Content-Type': 'application/json'
-        },
-        success: function(res) {
-          var lines = res.data.names.split(',');
-          vm.setData({ names: lines });
-          wx.setStorage({
-            key: "Lines",
-            data: lines
-          });
-        }
+      Rest.post('/api/user/add', userInfo, () => {});
+    });
+    const allLines = wx.getStorageSync('allLines');
+    if (!allLines.length) {
+      wx.removeStorageSync('Lines');
+      Rest.get('/bus/names/all', (data) => {
+        const lines = data.names.split(',');
+        wx.setStorage({ key: "allLines", data: lines });
+        vm.setData({ names: lines });
       });
     }
   },
@@ -63,10 +58,10 @@ Page({
   },
 
   clearInput: function () {
-      this.setData({
-          inputVal: "",
-          matchedBus: []
-      });
+    this.setData({
+      inputVal: "",
+      matchedBus: []
+    });
   },
 
   inputTyping: function (e) {
@@ -89,9 +84,10 @@ Page({
   },
 
   bindOnClickHistory: function(e) {
-    if (e.target.dataset.name) {
+    const { name } = e.target.dataset;
+    if (name) {
       wx.navigateTo({
-        url: '../bus/busDetail?name='+e.target.dataset.name
+        url: '../bus/busDetail?name=' + name
       });
     }
   },
@@ -101,44 +97,38 @@ Page({
     wx.removeStorage({
       key: 'history',
       success: function(res) {
-        vm.setData({
-          history: []
-        });
+        vm.setData({  history: [] });
       }
     });
   },
 
   bindOnClearHistoryItem: function(e) {
-    var history = this.data.history;
+    const { history } = this.data;
     var index = history.findIndex(i => i === e.target.dataset.name);
     history.splice(index, 1);
     wx.setStorage({
       key: "history",
       data: history
     });
-    this.setData({
-      history
-    });
+    this.setData({ history });
   },
 
   bindOnSearch: function () {
-    var history = this.data.history;
-    if (this.data.inputVal) {
-      if (!history.includes(this.data.inputVal)) {
-        console.error(history.length >= 10)
-        if (history.length >= 10) {
+    const { history, inputVal, names } = this.data;
+    if (!inputVal.length) return;
+    if (names.indexOf(inputVal) < 0) {
+      App.showModal('提示', '哎呀, 没有找到您查询的路线～', () => {});
+    } else {
+      if (!history.includes(inputVal)) {
+        if (history.length >= 8) {
           history.splice(history.length - 1, 1);
         }
-        history.unshift(this.data.inputVal);
+        history.unshift(inputVal);
       }
       this.setData({ history });
-      wx.setStorage({
-        key: "history",
-        data: history
-      });
-
+      wx.setStorage({ key: "history", data: history });
       wx.navigateTo({
-        url: '../bus/busDetail?name='+this.data.inputVal
+        url: '../bus/busDetail?name=' + inputVal
       });
     }
   }

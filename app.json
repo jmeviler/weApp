@@ -4,7 +4,8 @@
     "pages/index/index",
     "pages/weather/weather",
     "pages/express/express",
-    "pages/bus/busDetail"
+    "pages/bus/busDetail",
+    "pages/feedback/feedback"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -28,6 +29,5 @@
       "selectedIconPath": "image/icon_API_HL.png",
       "text": "应用"
     }]
-  },
-  "debug": true
+  }
 }
