@@ -1,6 +1,6 @@
 .bus-detail {
   width: 100%;
-  height: 100%;
+  height: 99%;
   border-top: 1px solid #ddd;
 }
 
@@ -8,24 +8,29 @@
   background: #fff;
   padding: .625rem;
   border-bottom: 1rpx solid #D7D6DC;
+  vertical-align: middle;
+  padding-right:0;
 }
 
 .bus-name {
-  font-size: .9375rem;
   font-weight: bold;
+  font-family:Arial;
+  font-size: .8125rem;
+  text-align: left;
   display: inline-block;
-  padding: 10rpx 12rpx;
-  border-bottom: 3rpx solid #000;
+  margin-right: 20rpx;
+  vertical-align: middle;
 }
 
 .bus-start-end {
-  font-size: .9375rem;
-  display: inline-block;
-  padding-top: .625rem;
   max-width:90%;
+  text-align: left;
+  font-size: .8125rem;
   overflow:hidden;
-  text-overflow:ellipsis;
   white-space:nowrap;
+  vertical-align: middle;
+  text-overflow:íellipsis;
+  display: inline-block;
 }
 
 .station {
@@ -33,13 +38,49 @@
 }
 
 .icon-switch {
-  width: 36rpx;
-  height: 24rpx;
+  width: 24rpx;
+  height: 18rpx;
   padding: 0 10rpx;
 }
 
+.station-wraper {
+  width: 90%;
+  display:inline-block;
+  padding-bottom: 4rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.time-wraper {
+  width: 90%;
+  color:#a9a9a9;
+  font-family:Arial;
+  display:inline-block;
+}
+
+.time {
+  font-size: .75rem;
+  display: inline-block;
+}
+
+.late-time {
+  margin-left: 30rpx;
+}
+
+.icon-arrow {
+  width: 60rpx;
+  float: right;
+  height: 48rpx;
+  display: inline-block;
+  vertical-align: top;
+  margin-top:-90rpx;
+  padding:20rpx;
+
+}
+
 .scroll-view_H {
-  height: calc(100% - 165rpx);
+  height: calc(99% - 165rpx);
   margin: .3125rem 0;
 }
 

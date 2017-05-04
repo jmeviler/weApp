@@ -1,15 +1,18 @@
 <view wx:if="{{!noShow}}" class="bus-detail">
-  <view class="header-wrapper">
-    <view style="text-align: center">
+  <view class="header-wrapper" bindtap="onClickSwitch">
+    <view class="station-wraper">
       <view class="bus-name">{{name}}</view>
-    </view>
-    <view style="text-align: center">
-      <view class="bus-start-end" bindtap="onClickSwitch">
+      <view class="bus-start-end">
         <view class="station">{{stations.start}}</view>
-        <image class="icon-switch" bindtap="onClickSwitch" src="/image/switch.png" mode="aspectFill" />
+        <image class="icon-switch" src="/image/switch.png" mode="aspectFill" />
         <view class="station">{{stations.end}}</view>
       </view>
     </view>
+    <view class="time-wraper">
+      <view class="time">{{'首班: ' + stations.earlytime }}</view>
+      <view class="time late-time">{{'末班: ' + stations.latetime }}</view>
+    </view>
+    <image class="icon-arrow" src="http://7vikht.com1.z0.glb.clouddn.com/arrow_w.png" />
   </view>
   <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
     <view wx:for="{{stations.stops}}" wx:key="{{ index }}"  wx:for-item="item" class="stops-items">

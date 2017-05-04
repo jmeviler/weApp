@@ -20,14 +20,24 @@ Page({
     if (!name.length) return;
 
     wx.request({
-      url: 'https://robot.leanapp.cn/api/bus/' + name,
+      url: 'https://robot.leanapp.cn/api/bus/' + encodeURIComponent(name),
       header: { 'Content-Type': 'application/json' },
       success: function(res) {
         if (res.statusCode === 200) {
           const { lineResults0, lineResults1, busLine } = res.data;
-          const { start_stop, end_stop } = busLine;
-          const stationsLeft = Object.assign({}, lineResults0, { start: start_stop, end: end_stop });
-          const stationsRight = Object.assign({}, lineResults1, { start: end_stop, end: start_stop });
+          const { start_stop, end_stop, end_earlytime, end_latetime, start_earlytime, start_latetime } = busLine;
+          const stationsLeft = Object.assign({}, lineResults0, {
+            start: start_stop,
+            end: end_stop,
+            earlytime: start_earlytime,
+            latetime: start_latetime
+          });
+          const stationsRight = Object.assign({}, lineResults1, {
+            start: end_stop,
+            end: start_stop,
+            earlytime: end_earlytime,
+            latetime: end_latetime
+          });
           vm.setData({ name, stations: stationsLeft, stationsLeft, stationsRight, noShow: false, busInfo: busLine });
         } else {
           App.showModal('提示', '哎呀，服务器开小差了～刷新一下吧～', () => { wx.navigateBack() });
