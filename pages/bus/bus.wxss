@@ -155,7 +155,7 @@
   height: 60rpx;
   vertical-align: baseline;
   float: right;
-  padding-top: 10rpx;
+  padding-top: 16rpx;
   padding-right: 30rpx;
 }
 .clear-history{

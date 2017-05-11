@@ -101,6 +101,21 @@
   padding: .3125rem;
 }
 
+.station-name {
+  width:90%;
+  display:inline-block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.icon-arrow-up-down {
+  width:18px;
+  height:16px;
+  margin-left:18rpx;
+  display: inline-block;
+}
+
 .bellows-wrapper {
   font-size: .75rem;
   padding: .3125rem .625rem;

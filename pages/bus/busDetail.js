@@ -71,7 +71,7 @@ Page({
 
     App.showLoading();
     Rest.get(
-      '/api/busstop/' + name + '/' + lineId + '/' + stopId + '/' + direction,
+      '/api/busstop/' + encodeURIComponent(name) + '/' + lineId + '/' + stopId + '/' + direction,
       (data) => {
         let tips = '';
         if (data.cars.length) {
