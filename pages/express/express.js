@@ -13,7 +13,6 @@ Page({
 
   bindExpressChange: function (e) {
     var vm = this;
-    console.log(vm.data.key[e.detail.value]);
     vm.setData({
       index: e.detail.value
     });

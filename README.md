@@ -1,6 +1,6 @@
 # 上海实时公交--`上海Bus`
 
-![上海-Bus v-0.0.54](https://img.shields.io/badge/上海_bus-0.0.54-green.svg)
+![上海-Bus v-0.0.6](https://img.shields.io/badge/上海_bus-0.0.6-green.svg)
 
 ### 现有功能
 

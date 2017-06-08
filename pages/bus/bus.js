@@ -4,7 +4,7 @@ import * as Rest from '../../utils/restUtil';
 
 Page({
   data: {
-    inputShowed: true,
+    inputShowed: false,
     inputVal: "",
     matchedBus: [],
     history: wx.getStorageSync('history') || [],
@@ -13,21 +13,20 @@ Page({
 
   onLoad: function () {
     var vm = this;
+    let allLines = wx.getStorageSync('allLines');
     App.getUserInfo((userInfo) => {
       vm.setData({ userInfo });
       Rest.post('/api/user/add', userInfo, () => {});
+      if (!allLines.length) {
+        Rest.get('/bus/names/all', (res) => {
+          const { data } = res;
+          const lines = data.names.split(',');
+          wx.setStorage({ key: "allLines", data: lines });
+          allLines = lines;
+          vm.setData({ names: allLines });
+      });
+      }
     });
-    let allLines = wx.getStorageSync('allLines');
-    if (!allLines.length) {
-      Rest.get('/bus/names/all', (res) => {
-        const { data } = res;
-        const lines = data.names.split(',');
-        wx.setStorage({ key: "allLines", data: lines });
-        allLines = lines;
-     });
-    }
-
-    vm.setData({ names: allLines });
   },
 
   onShareAppMessage: function () {
@@ -82,7 +81,7 @@ Page({
   },
 
   checkBusName: function (data, key){
-    if (!key.length) return [];
+    if (!key.length || !data) return [];
     return data.filter(item => !item.indexOf(key) && item != key);
   },
 
