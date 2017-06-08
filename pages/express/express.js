@@ -1,4 +1,6 @@
 var util = require('../../utils/util.js')
+import * as Rest from '../../utils/restUtil';
+
 Page({
   data: {
     express: [ '圆通快递','申通快递','顺丰快递','韵达快递','德邦物流','中通快递','百世快递','邮政包裹','EMS','邮政国际' ],
@@ -34,7 +36,7 @@ Page({
     });
 
     wx.request({
-      url: 'https://robot.leanapp.cn/api/express/'+type+'/'+postId,
+      url: Rest.getBaseUrl() + '/api/express/'+type+'/'+postId,
       header: { 'Content-Type': 'application/json' },
       success: function(res) {
         vm.setData({

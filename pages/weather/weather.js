@@ -2,8 +2,6 @@ var util = require('../../utils/util.js')
 
 import * as Rest from '../../utils/restUtil';
 
-import { BASE_URL } from '../../utils/constant';
-
 Page({
   data: {
     date: util.formatTime(new Date()),
