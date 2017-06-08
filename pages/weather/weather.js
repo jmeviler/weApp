@@ -1,6 +1,8 @@
 var util = require('../../utils/util.js')
-import { BASE_URL } from '../../utils/constant';
+
 import * as Rest from '../../utils/restUtil';
+
+import { BASE_URL } from '../../utils/constant';
 
 Page({
   data: {
@@ -8,19 +10,18 @@ Page({
     weather: {},
     loading: false
   },
-
-  updateWeather: function () {
-    var vm = this;
-    vm.setData({ loading: !vm.data.loading });
-    Rest.get('/api/weather', (data) => {
-      vm.setData({
-        weather: data,
-        loading: !vm.data.loading
-      });
-    });
-  },
-
   onLoad: function () {
+    wx.getLocation({
+      type: 'wgs84',
+      success: function(res) {
+        console.error(res);
+        var latitude = res.latitude
+        var longitude = res.longitude
+        var speed = res.speed
+        var accuracy = res.accuracy
+      }
+    });
+
     var vm = this;
     setInterval(() => {
       vm.setData({
@@ -29,10 +30,23 @@ Page({
     }, 1000);
 
     var vm = this;
-    Rest.get('/api/weather', (data) => {
+    Rest.get('/api/weather', (res) => {
+      const { data } = res;
       vm.setData({
         weather: data
       });
     });
-  }
+  },
+
+  updateWeather: function () {
+    var vm = this;
+    vm.setData({ loading: !vm.data.loading });
+    Rest.get('/api/weather', (res) => {
+      const { data } = res;
+      vm.setData({
+        weather: data,
+        loading: !vm.data.loading
+      });
+    });
+  },
 })
