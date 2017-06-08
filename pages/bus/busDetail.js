@@ -1,5 +1,5 @@
-'use strict';
 import * as Rest from '../../utils/restUtil';
+
 const App = getApp();
 
 Page({
@@ -19,10 +19,9 @@ Page({
     var name = option.name;
     if (!name.length) return;
 
-    wx.request({
-      url: 'https://robot.leanapp.cn/api/bus/' + encodeURIComponent(name),
-      header: { 'Content-Type': 'application/json' },
-      success: function(res) {
+    Rest.get(
+      '/api/bus/' + encodeURIComponent(name),
+      (res) => {
         if (res.statusCode === 200) {
           const { lineResults0, lineResults1, busLine } = res.data;
           const { start_stop, end_stop, end_earlytime, end_latetime, start_earlytime, start_latetime } = busLine;
@@ -44,7 +43,7 @@ Page({
           vm.setData({ noShow: true });
         }
       }
-    });
+    );
   },
 
   onShareAppMessage() {
@@ -72,8 +71,9 @@ Page({
     App.showLoading();
     Rest.get(
       '/api/busstop/' + encodeURIComponent(name) + '/' + lineId + '/' + stopId + '/' + direction,
-      (data) => {
+      (res) => {
         let tips = '';
+        const { data } = res;
         if (data.cars.length) {
           const { terminal, stopdis, time } = data.cars[0];
           if (time !== 'null') {

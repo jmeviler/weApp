@@ -5,17 +5,20 @@ App({
   onLaunch: function () {
     const allLines = wx.getStorageSync('allLines');
     if (!allLines.length) {
-      Rest.get('/bus/names/all', (data) => {
-        const lines = data.names.split(',');
-        wx.setStorage({ key: "allLines", data: lines });
+      Rest.get('/bus/names/all', (res) => {
+        const lines = res.data.names.split(',');
+        wx.setStorage({
+          key: "allLines",
+          data: lines
+        });
       });
     }
   },
-  getUserInfo:function(cb){
+  getUserInfo: function (cb) {
     const vm = this;
-    if(this.globalData.userInfo){
+    if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
+    } else {
       wx.login({
         success: function () {
           wx.getUserInfo({
@@ -29,7 +32,10 @@ App({
     }
   },
   showLoading(title = '查询中', icon = 'loading') {
-    wx.showToast({ title, icon });
+    wx.showToast({
+      title,
+      icon
+    });
   },
   hideLoading() {
     wx.hideToast();
@@ -39,7 +45,7 @@ App({
       title,
       content,
       showCancel: false,
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           cb();
         }

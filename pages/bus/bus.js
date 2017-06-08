@@ -1,9 +1,10 @@
 const App = getApp();
+
 import * as Rest from '../../utils/restUtil';
 
 Page({
   data: {
-    inputShowed: false,
+    inputShowed: true,
     inputVal: "",
     matchedBus: [],
     history: wx.getStorageSync('history') || [],
@@ -16,15 +17,17 @@ Page({
       vm.setData({ userInfo });
       Rest.post('/api/user/add', userInfo, () => {});
     });
-    const allLines = wx.getStorageSync('allLines');
+    let allLines = wx.getStorageSync('allLines');
     if (!allLines.length) {
-      wx.removeStorageSync('Lines');
-      Rest.get('/bus/names/all', (data) => {
+      Rest.get('/bus/names/all', (res) => {
+        const { data } = res;
         const lines = data.names.split(',');
         wx.setStorage({ key: "allLines", data: lines });
-        vm.setData({ names: lines });
-      });
+        allLines = lines;
+     });
     }
+
+    vm.setData({ names: allLines });
   },
 
   onShareAppMessage: function () {
