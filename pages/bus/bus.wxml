@@ -45,4 +45,7 @@
     </view>
     <view class="history-item clear-history" bindtap="bindOnClearAll">清空历史纪录</view>
   </view>
+  <view class="feedback-tips">
+    使用中有任何问题,请在意见反馈提出您的宝贵意见
+  </view>
 </view>

@@ -12,10 +12,8 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function(res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
-        var speed = res.speed
-        var accuracy = res.accuracy
+        const { latitude, longitude, speed, accuracy } = res;
+        console.error(latitude, longitude, speed, accuracy)
       }
     });
 
