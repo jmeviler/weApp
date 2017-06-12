@@ -84,9 +84,16 @@
   margin: .3125rem 0;
 }
 
+.stops-wrapper  {
+  border-left: 2px solid #bdc1c5;
+  padding-left:.875rem;
+  padding-bottom:.3125rem;
+  padding-right:.3125rem;
+  margin-left:.4375rem;
+}
+
 .stops-items {
   padding: .3125rem 0;
-  margin: .3125rem .625rem 0;
   border: 1px solid #ddd;
   border-radius: 5px;
 }
@@ -95,10 +102,28 @@
   margin-bottom: .3125rem;
 }
 
+.icon-point {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  left: -.3125rem;
+  margin-top: 8rpx;
+}
+
 .stop-item {
   text-align: left;
   font-size: .9375rem;
   padding: .3125rem;
+}
+
+.icon-traffic {
+  position: absolute;
+  z-index: 10;
+  left: .9875rem;
+  width: 8px;
+  height: 10px;
+  background-size: 100%;
+  margin-top: 2rpx;
 }
 
 .station-name {
@@ -107,6 +132,10 @@
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+}
+
+.station-name-active {
+  color: #187cd7;
 }
 
 .icon-arrow-up-down {
@@ -118,7 +147,9 @@
 
 .bellows-wrapper {
   font-size: .75rem;
-  padding: .3125rem .625rem;
+  margin: 0 .625rem ;
+  padding: .3125rem 0;
+  border-top: 1px solid #bdc1c5;
 }
 
 .hidden {
