@@ -40,7 +40,7 @@
       data-name="{{item}}" wx:for-item="item"
       class="history-item" bindtap="bindOnClickHistory">
       <image class="icon-bus" src="/image/bus.png" mode="aspectFill" />
-      <view class="history-name" data-name="{{item}}" bindtap="bindOnClickHistory">{{item}}</view>
+      <view class="history-name" data-name="{{item}}">{{item}}</view>
       <image class="icon-trash" src="/image/trash.png" data-name="{{item}}" catchtap="bindOnClearHistoryItem" mode="aspectFill" />
     </view>
     <view class="history-item clear-history" bindtap="bindOnClearAll">清空历史纪录</view>
