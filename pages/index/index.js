@@ -1,9 +1,31 @@
 import * as Rest from '../../utils/restUtil';
+import { QINIU_URL } from '../../utils/constant'
 
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
+    tools: [{
+      key: 'express',
+      icon: '/express.png',
+      name: '快递查询'
+    }, {
+      key: 'weather',
+      icon: '/weather.png',
+      name: '实时天气'
+    }, {
+      key: 'feedback',
+      icon: '/feedback.png',
+      name: '意见反馈'
+    }, {
+      key: 'metro',
+      icon: '/metro.png',
+      name: '地铁站点信息'
+    }, {
+      key: 'yue',
+      icon: '/yue.png',
+      name: '交通卡余额'
+    }],
+    QINIU_URL,
     userInfo: {}
   },
   onLoad: function () {

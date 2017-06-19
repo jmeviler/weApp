@@ -28,6 +28,7 @@
 .tools-item {
   width: 33%;
   padding:24rpx 0;
+  float: left;
   display: inline-block;
 }
 

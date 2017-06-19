@@ -9,41 +9,16 @@
   </view>
 
   <view class="tools-wrapper">
-    <view class="tools-item">
+    <view wx:for="{{tools}}" wx:key="{{index}}" data-name="{{item.key}}" wx:for-item="item" class="tools-item">
       <image
         class="tool-icon"
-        src="http://7vikht.com1.z0.glb.clouddn.com/express.png"
-        data-name="express"
+        src="{{QINIU_URL + item.icon}}"
+        data-name="{{item.key}}"
         bindtap="bindOnGoRoute"
       />
-      <view class="tool-name" data-name="express" bindtap="bindOnGoRoute">
-        快递查询
-      </view>
-    </view>
-    <view class="tools-item">
-      <image
-        class="tool-icon"
-        src="http://7vikht.com1.z0.glb.clouddn.com/weather.png"
-        data-name="weather"
-        bindtap="bindOnGoRoute"
-      />
-      <view class="tool-name" data-name="weather" bindtap="bindOnGoRoute">
-        实时天气
-      </view>
-    </view>
-    <view class="tools-item">
-      <image
-        class="tool-icon"
-        src="http://7vikht.com1.z0.glb.clouddn.com/feedback.png"
-        data-name="feedback"
-        bindtap="bindOnGoRoute"
-      />
-      <view class="tool-name" data-name="feedback" bindtap="bindOnGoRoute">
-        意见反馈
+      <view class="tool-name" data-name="{{item.key}}" bindtap="bindOnGoRoute">
+        {{ item.name }}
       </view>
     </view>
   </view>
-  <!--<view bindtap="bindClickHello" class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>-->
 </view>
