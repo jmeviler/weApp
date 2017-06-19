@@ -2,8 +2,6 @@ var util = require('../../utils/util.js')
 
 import * as Rest from '../../utils/restUtil';
 
-import { BASE_URL } from '../../utils/constant';
-
 Page({
   data: {
     date: util.formatTime(new Date()),
@@ -14,11 +12,8 @@ Page({
     wx.getLocation({
       type: 'wgs84',
       success: function(res) {
-        console.error(res);
-        var latitude = res.latitude
-        var longitude = res.longitude
-        var speed = res.speed
-        var accuracy = res.accuracy
+        const { latitude, longitude, speed, accuracy } = res;
+        console.error(latitude, longitude, speed, accuracy)
       }
     });
 

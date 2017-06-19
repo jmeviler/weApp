@@ -15,14 +15,35 @@
     <image class="icon-arrow" src="http://7vikht.com1.z0.glb.clouddn.com/arrow_w.png" />
   </view>
   <scroll-view class="scroll-view_H" scroll-y="true" style="width: 100%">
-    <view wx:for="{{stations.stops}}" wx:key="{{ index }}"  wx:for-item="item" class="stops-items">
-        <view class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
-          <view class="station-name" id="{{item.id}}">{{index+1}}.  {{item.zdmc}}</view>
-          <image class="icon-arrow-up-down" src="/image/arrow_{{ stopId === item.id ? 'up' : 'down' }}.png" />
+    <view
+      wx:for="{{stations.stops}}"
+      wx:key="{{ index }}"
+      wx:for-item="item"
+      class="stops-wrapper"
+    >
+    <image
+      class="icon-point"
+      src="/image/icon_point{{ stopId === item.id ? '_active' : '' }}.png"
+    />
+    <view class="stops-items">
+      <view class="stop-item" id="{{item.id}}" bindtap="bindClickStop">
+        <image class="icon-traffic" src="/image/traffic.png" />
+        <view
+          class="station-name {{ stopId === item.id ? 'station-name-active' : '' }}"
+          id="{{item.id}}"
+        >
+          {{index+1}}.  {{item.zdmc}}
         </view>
-        <view class="{{ stopId === item.id ? 'bellows-wrapper' : 'hidden' }}" id="{{item.id}}" bindtap="bindClickStop">
-            {{tips.length ? tips : '尚未发车,请耐心等待~'}}
-        </view>
+        <image class="icon-arrow-up-down" src="/image/arrow_{{ stopId === item.id ? 'up' : 'down' }}.png" />
+      </view>
+      <view
+        class="{{ stopId === item.id ? 'bellows-wrapper' : 'hidden' }}"
+        id="{{item.id}}"
+        bindtap="bindClickStop"
+      >
+        {{tips.length ? tips : '尚未发车,请耐心等待~'}}
+      </view>
+    </view>
     </view>
   </scroll-view>
 </view>
