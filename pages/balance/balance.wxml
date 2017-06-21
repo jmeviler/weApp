@@ -1,0 +1,27 @@
+<view class="balance-container">
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <view class="weui-label">卡号</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="请输入卡号"/>
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <view class="weui-label">余额</view>
+    </view>
+    <view class="weui-cell__bd">
+      <view class="weui-input">
+        0.0元
+      </view>
+    </view>
+  </view>
+  <view class="icon-wrap">
+    <icon type="info" class="icon-info" size="20"></icon>
+  <view class="info-tips">
+    卡号首字母无需填写, 仅填写数字部分
+  </view>
+  </view>
+  <button class="weui-btn" type="primary">查询</button>
+</view>

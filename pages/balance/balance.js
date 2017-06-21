@@ -1,0 +1,7 @@
+Page({
+  data: {
+  },
+  onLoad: function () {
+
+  },
+})

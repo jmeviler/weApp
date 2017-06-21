@@ -21,7 +21,7 @@ Page({
       icon: '/metro.png',
       name: '地铁站点信息'
     }, {
-      key: 'yue',
+      key: 'balance',
       icon: '/yue.png',
       name: '交通卡余额'
     }],

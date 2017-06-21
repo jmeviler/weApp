@@ -5,7 +5,8 @@
     "pages/weather/weather",
     "pages/express/express",
     "pages/bus/busDetail",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/balance/balance"
   ],
   "window":{
     "backgroundTextStyle":"light",
