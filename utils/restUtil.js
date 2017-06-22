@@ -9,9 +9,10 @@ export const getBaseUrl = () => {
   return BASE_URL_T;
 }
 
-export const get = (url, success, fail) => {
+export const get = (url, success, fail, data = {}) => {
   wx.request({
     url: getBaseUrl() + url,
+    data,
     header: { 'Content-Type': 'application/json' },
     success: (res) => success(res),
     fail: (error) => fail(error)

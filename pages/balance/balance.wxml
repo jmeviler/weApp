@@ -4,7 +4,18 @@
       <view class="weui-label">卡号</view>
     </view>
     <view class="weui-cell__bd">
-      <input class="weui-input" placeholder="请输入卡号"/>
+      <input
+        class="weui-input"
+        placeholder="请输入卡号"
+        value="{{inputVal}}"
+        bindinput="inputTyping"
+      />
+    </view>
+  </view>
+  <view class="{{ warning.length ? 'warn-wrap' : 'hidden' }}">
+    <icon type="warn" class="icon-info" size="20"></icon>
+    <view class="info-tips">
+      {{warning}}
     </view>
   </view>
   <view class="weui-cell">
@@ -13,15 +24,15 @@
     </view>
     <view class="weui-cell__bd">
       <view class="weui-input">
-        0.0元
+        {{balance}}元
       </view>
     </view>
   </view>
   <view class="icon-wrap">
     <icon type="info" class="icon-info" size="20"></icon>
-  <view class="info-tips">
-    卡号首字母无需填写, 仅填写数字部分
+    <view class="info-tips">
+      卡号首字母无需填写, 仅填写数字部分
+    </view>
   </view>
-  </view>
-  <button class="weui-btn" type="primary">查询</button>
+  <button class="weui-btn" type="primary" bindtap="bindOnSearch">查询</button>
 </view>

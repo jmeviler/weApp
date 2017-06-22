@@ -12,3 +12,7 @@ page {
   padding:200rpx 0 150rpx;
   box-sizing: border-box;
 }
+
+.hidden {
+  display: none;
+}
