@@ -1,0 +1,63 @@
+<view class="container-metro">
+  <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+          <view class="weui-search-bar__box">
+              <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+              <input
+                type="text"
+                class="weui-search-bar__input"
+                confirm-type='search'
+                placeholder="请输入地铁站点名称"
+                value="{{inputVal}}"
+                focus="{{inputShowed}}"
+                bindinput="inputTyping"
+                bindconfirm="bindOnSearch"
+              />
+              <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                  <icon type="clear" size="14" />
+              </view>
+          </view>
+          <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+              <icon class="weui-icon-search" type="search" size="14" />
+              <view class="weui-search-bar__text">请输入地铁站点名称</view>
+          </label>
+      </view>
+  </view>
+  <view class="search-wrapper">
+    <button class="bus-search" type="primary" plain bindtap="bindOnSearch" loading="{{loading}}">查询</button>
+  </view>
+  <view class="mtro-detail">
+  </view>
+  <view class="{{list.length ? 'index-bd' : 'hidden'}}">
+    <view class="kind-list">
+      <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+        <view class="kind-list-item">
+          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{item.name}}</view>
+            <view class="{{item.open ? 'arrow-down' : 'arrow-up' }}"></view>
+          </view>
+          <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+              <block wx:for-items="{{item.datas}}" wx:for-item="data" wx:key="item.id">
+                <view wx:if="{{item.id === 'time'}}" class="time-item">
+                    <view class="line-name line-{{data.line}}">{{data.line}}</view>
+                    <view class="line-direction">{{data.description}}</view>
+                    <view class="line-time">{{data.first_time + '--'+ data.last_time}}</view>
+                </view>
+                <view wx:if="{{item.id === 'entrance'}}" class="toilet-item">
+                  {{data}}
+                </view>
+                <view wx:if="{{item.id === 'toilet'}}" class="toilet-item">
+                  {{data}}
+                </view>
+                <view wx:if="{{item.id === 'elevator'}}" class="toilet-item">
+                  {{data}}
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

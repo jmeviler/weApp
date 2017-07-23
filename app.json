@@ -6,7 +6,8 @@
     "pages/express/express",
     "pages/bus/busDetail",
     "pages/feedback/feedback",
-    "pages/balance/balance"
+    "pages/balance/balance",
+    "pages/metro/metro"
   ],
   "window":{
     "backgroundTextStyle":"light",
