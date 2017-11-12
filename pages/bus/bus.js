@@ -16,15 +16,15 @@ Page({
     let allLines = wx.getStorageSync('allLines');
     App.getUserInfo((userInfo) => {
       vm.setData({ userInfo });
-      Rest.post('/api/user/add', userInfo, () => {});
+      Rest.post('/user/add', userInfo, () => { });
       if (!allLines.length) {
-        Rest.get('/bus/names/all', (res) => {
+        Rest.get('/bus/all', (res) => {
           const { data } = res;
           const lines = data.names.split(',');
           wx.setStorage({ key: "allLines", data: lines });
           allLines = lines;
           vm.setData({ names: allLines });
-      });
+        });
       }
     });
   },
@@ -36,7 +36,7 @@ Page({
     }
   },
 
-  onHide: function() {
+  onHide: function () {
     this.setData({
       inputShowed: false,
       inputVal: "",
@@ -80,12 +80,12 @@ Page({
     });
   },
 
-  checkBusName: function (data, key){
+  checkBusName: function (data, key) {
     if (!key.length || !data) return [];
     return data.filter(item => !item.indexOf(key) && item != key);
   },
 
-  bindOnClickHistory: function(e) {
+  bindOnClickHistory: function (e) {
     const { name } = e.target.dataset;
     if (name) {
       wx.navigateTo({
@@ -94,17 +94,17 @@ Page({
     }
   },
 
-  bindOnClearAll: function() {
+  bindOnClearAll: function () {
     var vm = this;
     wx.removeStorage({
       key: 'history',
-      success: function(res) {
-        vm.setData({  history: [] });
+      success: function (res) {
+        vm.setData({ history: [] });
       }
     });
   },
 
-  bindOnClearHistoryItem: function(e) {
+  bindOnClearHistoryItem: function (e) {
     const { history } = this.data;
     var index = history.findIndex(i => i === e.target.dataset.name);
     history.splice(index, 1);
@@ -119,7 +119,7 @@ Page({
     const { history, inputVal, names } = this.data;
     if (!inputVal.length) return;
     if (names.indexOf(inputVal) < 0) {
-      App.showModal('提示', '哎呀, 没有找到您查询的路线～', () => {});
+      App.showModal('提示', '哎呀, 没有找到您查询的路线～', () => { });
     } else {
       if (!history.includes(inputVal)) {
         if (history.length >= 8) {

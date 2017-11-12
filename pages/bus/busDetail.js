@@ -20,7 +20,7 @@ Page({
     if (!name.length) return;
 
     Rest.get(
-      '/api/bus/' + encodeURIComponent(name),
+      '/bus/name?name=' + encodeURIComponent(name),
       (res) => {
         if (res.statusCode === 200) {
           const { lineResults0, lineResults1, busLine } = res.data;
@@ -67,10 +67,9 @@ Page({
     const { name, direction, busInfo } = vm.data;
     const lineId = busInfo.line_id;
     const stopId = e.target.id;
-
     App.showLoading();
     Rest.get(
-      '/api/busstop/' + encodeURIComponent(name) + '/' + lineId + '/' + stopId + '/' + direction,
+      '/bus/realtime?name=' + encodeURIComponent(name) + '&lineid=' + lineId + '&stopid=' + stopId + '&direction=' + direction,
       (res) => {
         let tips = '';
         const { data } = res;

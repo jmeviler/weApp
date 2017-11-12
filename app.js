@@ -5,7 +5,7 @@ App({
   onLaunch: function () {
     const allLines = wx.getStorageSync('allLines');
     if (!allLines.length) {
-      Rest.get('/bus/names/all', (res) => {
+      Rest.get('/bus/all', (res) => {
         const lines = res.data.names.split(',');
         wx.setStorage({
           key: "allLines",
