@@ -10,7 +10,10 @@
 
 #### 上海实时天气
 
-# 因些许朋友直接改名发布改程序，现已不再 github 更新 
+# 因些许朋友直接改名发布该小程序现已不再 github 更新 
 
 ### 扫码关注使用
 ![avatar](http://img.onesway.xyz/sh-bus.jpg)
+
+### 您的支持, 是我最大的动力
+![avatar](http://img.onesway.xyz/donate_qr.jpeg)
