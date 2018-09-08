@@ -17,3 +17,6 @@
 
 ### 您的支持, 是我最大的动力
 ![avatar](http://img.onesway.xyz/donate_qr.jpeg?imageView2/0/w/260/format/png)
+
+
+#### 版权声明：非商用-非衍生-保持署名[（创意共享3.0许可证）](https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh)
